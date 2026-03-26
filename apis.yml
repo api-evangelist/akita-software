@@ -1,32 +1,63 @@
 aid: akita-software
 name: Akita Software
 description: >-
-  Akita Software is an API observability and analysis platform that uses passive
-  traffic monitoring to automatically map APIs and detect changes.
+  Akita Software was an API observability and analysis platform that used
+  passive traffic monitoring to automatically map APIs, detect changes, and
+  identify issues. Akita was acquired by Postman in 2023 and its technology has
+  been integrated into the Postman platform as Postman Live Insights.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API Analysis
   - API Observability
+  - API Discovery
+  - Traffic Analysis
+  - API Mapping
+  - Acquired
 url: >-
   https://raw.githubusercontent.com/api-evangelist/akita-software/refs/heads/main/apis.yml
-created: '2026-03-26'
+created: '2025-01-08'
 modified: '2026-03-26'
 specificationVersion: '0.19'
+access: 3rd-Party
+position: Consumer
 apis:
   - aid: akita-software:akita-software
     name: Akita Software
     description: >-
-      Akita Software is an API observability and analysis platform that uses
-      passive traffic monitoring to automatically map APIs and detect changes.
+      Akita Software provided an API observability platform that used passive
+      traffic monitoring to automatically discover, map, and model APIs without
+      requiring code changes. It could generate API specs from traffic,
+      detect breaking changes, and monitor API performance. Akita was acquired
+      by Postman in November 2023, and its capabilities are now available as
+      Postman Live Insights.
     humanURL: https://www.akitasoftware.com
     tags:
-      - API Analysis
       - API Observability
-    properties: []
+      - API Discovery
+      - Traffic Analysis
+      - API Mapping
+    properties:
+      - type: Documentation
+        url: https://docs.akita.software
+      - type: GitHub
+        url: https://github.com/akitasoftware
+      - type: Getting Started
+        url: https://docs.akita.software/docs/getting-started
 common:
   - type: Website
     url: https://www.akitasoftware.com
+  - type: Documentation
+    url: https://docs.akita.software
+  - type: GitHub
+    url: https://github.com/akitasoftware
+  - type: Blog
+    url: https://blog.akita.software
+  - type: Twitter
+    url: https://twitter.com/akaboraitasoftware
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/akita-software/
+  - type: Postman Live Insights
+    url: https://www.postman.com/product/live-insights/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
