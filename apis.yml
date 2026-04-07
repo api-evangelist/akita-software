@@ -8,11 +8,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API Observability
-  - API Discovery
-  - Traffic Analysis
-  - API Mapping
   - Acquired
+  - API Discovery
+  - API Mapping
+  - API Observability
+  - Traffic Analysis
 url: >-
   https://raw.githubusercontent.com/api-evangelist/akita-software/refs/heads/main/apis.yml
 created: '2025-01-08'
@@ -32,10 +32,10 @@ apis:
       Postman Live Insights.
     humanURL: https://www.akitasoftware.com
     tags:
-      - API Observability
       - API Discovery
-      - Traffic Analysis
       - API Mapping
+      - API Observability
+      - Traffic Analysis
     properties:
       - type: Documentation
         url: https://docs.akita.software
