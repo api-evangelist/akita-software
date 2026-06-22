@@ -3,16 +3,13 @@
   "feeds": [
     {
       "source": "https://blog.akita.software",
-      "error": "URLError"
-    },
-    {
-      "source": "https://github.com/akitasoftware",
-      "feed_url": "https://github.com/akitasoftware",
+      "feed_url": "https://blog.akita.software",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "none",
+      "error": "ECONNREFUSED - blog domain decommissioned after Postman acquisition"
     }
   ],
-  "fetched": "2026-06-14T20:42:17Z",
+  "fetched": "2026-06-21T17:00:00Z",
   "post_count": 0
 }
