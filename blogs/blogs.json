@@ -3,13 +3,10 @@
   "feeds": [
     {
       "source": "https://blog.akita.software",
-      "feed_url": "https://blog.akita.software",
-      "title": "",
       "saved": 0,
-      "method": "none",
-      "error": "ECONNREFUSED - blog domain decommissioned after Postman acquisition"
+      "error": "DNS NXDOMAIN - blog domain does not resolve"
     }
   ],
-  "fetched": "2026-06-21T17:00:00Z",
+  "fetched": "2026-06-27T12:21:19Z",
   "post_count": 0
 }
