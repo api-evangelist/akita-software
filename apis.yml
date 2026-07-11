@@ -65,6 +65,8 @@ apis:
       - type: GettingStarted
         url: https://learning.postman.com/docs/insights/insights-gs/
 common:
+  - type: DomainSecurity
+    url: security/akita-software-domain-security.yml
   - type: Website
     url: https://www.akitasoftware.com
   - type: Documentation
