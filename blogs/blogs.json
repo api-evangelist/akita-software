@@ -2,11 +2,13 @@
   "repo": "akita-software",
   "feeds": [
     {
-      "source": "https://blog.akita.software",
+      "source": "https://github.com/akitasoftware",
+      "feed_url": "https://github.com/akitasoftware",
+      "title": "",
       "saved": 0,
-      "error": "DNS NXDOMAIN - blog domain does not resolve"
+      "method": "none"
     }
   ],
-  "fetched": "2026-06-27T12:21:19Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 0
 }
