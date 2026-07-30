@@ -8,7 +8,19 @@ description: >-
   Postman platform as Postman Live Insights. The Akita agent is now available
   as the open-source Postman Insights Agent.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/akita-software.png
 tags:
   - Acquired
   - API Discovery
