@@ -31,7 +31,7 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/akita-software/refs/heads/main/apis.yml
 created: '2025-01-08'
 modified: '2026-04-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
   - aid: akita-software:akita-software
     name: Akita Software
