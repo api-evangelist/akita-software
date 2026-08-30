@@ -1,0 +1,96 @@
+specification: API Commons Packages
+specificationVersion: '0.1'
+provider: Akita Software
+providerId: akita-software
+generated: '2026-08-30'
+method: searched
+source: >-
+  proxy.golang.org module metadata, the GitHub REST API for the akitasoftware
+  and postmanlabs organizations, and the akitasoftware/homebrew-akita tap
+description: >-
+  First-party distributed packages for Akita Software and its successor product.
+  Akita's own CLI and libraries were transferred to the postmanlabs organization
+  after the July 2023 acquisition; the akitasoftware/* Go module paths still
+  resolve because GitHub follows the repository transfers. There is no
+  language-client SDK for the observability API — the agent binary itself is the
+  distributed artifact, so no `SDKs` pointer is emitted.
+packages:
+  - name: github.com/postmanlabs/postman-insights-agent
+    registry: go
+    language: Go
+    official: true
+    version: v0.40.1
+    published: '2026-03-26'
+    url: https://pkg.go.dev/github.com/postmanlabs/postman-insights-agent
+    repository: https://github.com/postmanlabs/postman-insights-agent
+    license: Apache-2.0
+    status: active
+    note: >-
+      The open-source community build of the Postman Insights Agent — the direct
+      successor to the Akita agent. Version and date read from
+      proxy.golang.org/github.com/postmanlabs/postman-insights-agent/@latest.
+      Repository default branch was last pushed 2026-08-30, so development is
+      ahead of the last tagged release.
+  - name: github.com/akitasoftware/akita-libs
+    registry: go
+    language: Go
+    official: true
+    version: v0.0.0-20260805075359-4d5c2bfd6d62
+    published: '2026-08-05'
+    url: https://pkg.go.dev/github.com/akitasoftware/akita-libs
+    repository: https://github.com/postmanlabs/observability-shared-libs
+    status: active
+    note: >-
+      Supporting libraries for the Insights Agent. The akitasoftware/akita-libs
+      path redirects to postmanlabs/observability-shared-libs; the module is
+      untagged, so the latest is a pseudo-version. Read from
+      proxy.golang.org/github.com/akitasoftware/akita-libs/@latest.
+  - name: github.com/akitasoftware/akita-cli
+    registry: go
+    language: Go
+    official: true
+    version: v0.30.7
+    published: '2024-05-21'
+    url: https://pkg.go.dev/github.com/akitasoftware/akita-cli
+    repository: https://github.com/postmanlabs/observability-cli
+    status: archived
+    note: >-
+      The original Akita CLI (apidump / apispec / apidiff). The repository now
+      redirects to postmanlabs/observability-cli and is ARCHIVED (read-only,
+      last push 2024-06-05). Superseded by postman-insights-agent.
+  - name: akita-cli
+    registry: homebrew
+    language: Go
+    official: true
+    version: 0.29.3
+    published: null
+    url: https://github.com/akitasoftware/homebrew-akita
+    repository: https://github.com/akitasoftware/homebrew-akita
+    status: broken
+    note: >-
+      Homebrew tap `akitasoftware/akita`, formula akita-cli.rb, pinned to 0.29.3.
+      Homebrew taps carry no registry metadata endpoint, so no publish date is
+      available — version read from the formula's `version` stanza. The formula's
+      download URLs point at https://releases.akita.software/cli/0.29.3/... and
+      the akita.software domain has EXPIRED (it now redirects to
+      expireddomains.com), so this tap can no longer install. Tap repo last
+      pushed 2024-01-30.
+  - name: postman-insights-agent
+    registry: cdn
+    language: Go
+    official: true
+    version: null
+    published: null
+    url: https://releases.observability.postman.com/scripts/install-postman-insights-agent.sh
+    status: active
+    note: >-
+      The distributed (non-community) agent binary, installed via
+      `bash -c "$(curl -L https://releases.observability.postman.com/scripts/install-postman-insights-agent.sh)"`
+      per learning.postman.com/docs/insights/get-started/ec2/. The install script
+      URL is UNPINNED and floats to latest, and the release host indexes no
+      version listing (https://releases.observability.postman.com/ returns 200
+      with no manifest), so a consumer cannot tell which build they receive —
+      version recorded as null for that reason, not because it was unchecked.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

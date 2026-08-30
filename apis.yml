@@ -4,7 +4,7 @@ description: >-
   Akita Software was an API observability and analysis platform that used
   passive traffic monitoring to automatically map APIs, detect changes, and
   identify issues without requiring code changes or proxies. Akita was acquired
-  by Postman in November 2023 and its technology has been integrated into the
+  by Postman in July 2023 (announced 2023-07-19) and its technology has been integrated into the
   Postman platform as Postman Live Insights. The Akita agent is now available
   as the open-source Postman Insights Agent.
 type: Index
@@ -42,7 +42,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/akita-software/refs/heads/main/apis.yml
 created: '2025-01-08'
-modified: '2026-04-19'
+modified: '2026-08-30'
 specificationVersion: '0.23'
 apis:
   - aid: akita-software:akita-software
@@ -52,7 +52,8 @@ apis:
       traffic monitoring to automatically discover, map, and model APIs without
       requiring code changes or proxying. It could generate API specs from
       traffic, detect breaking changes, and monitor API performance. Akita was
-      acquired by Postman in November 2023, and its capabilities are now
+      acquired by Postman in July 2023 (announced 2023-07-19), and its capabilities
+      are now
       available as Postman Live Insights with the open-source Postman Insights
       Agent.
     humanURL: https://www.akitasoftware.com
@@ -62,12 +63,10 @@ apis:
       - API Observability
       - Traffic Analysis
     properties:
-      - type: Documentation
-        url: https://docs.akita.software
       - type: GitHubOrganization
         url: https://github.com/akitasoftware
-      - type: GettingStarted
-        url: https://docs.akita.software/docs/getting-started
+      - type: SourceCode
+        url: https://github.com/postmanlabs/observability-cli
   - aid: akita-software:postman-live-insights
     name: Postman Live Insights
     description: >-
@@ -75,7 +74,8 @@ apis:
       into the Postman platform. The Postman Insights Agent (open source) makes
       it easy to see the behavior of production APIs, discover API endpoints,
       and find and fix issues through passive traffic monitoring.
-    humanURL: https://www.postman.com/product/live-insights/
+    humanURL: https://www.postman.com/product/postman-insights/
+    baseURL: https://api.observability.postman.com
     tags:
       - API Discovery
       - API Monitoring
@@ -83,11 +83,19 @@ apis:
       - Postman
     properties:
       - type: Documentation
-        url: https://learning.postman.com/docs/insights/insights-overview/
+        url: https://learning.postman.com/docs/insights/overview/
       - type: GitHubRepository
         url: https://github.com/postmanlabs/postman-insights-agent
       - type: GettingStarted
-        url: https://learning.postman.com/docs/insights/insights-gs/
+        url: https://learning.postman.com/docs/insights/get-started/overview/
+      - type: Pricing
+        url: https://www.postman.com/pricing/
+      - type: TermsOfService
+        url: https://www.postman.com/legal/terms/
+      - type: PrivacyPolicy
+        url: https://privacy.postman.com/policies/
+      - type: Support
+        url: https://community.postman.com/
 common:
   - type: Releases
     url: https://github.com/postmanlabs/postman-insights-agent/releases
@@ -101,13 +109,31 @@ common:
   - type: Website
     url: https://www.akitasoftware.com
   - type: Documentation
-    url: https://docs.akita.software
+    url: https://learning.postman.com/docs/insights/overview/
   - type: GitHubOrganization
     url: https://github.com/akitasoftware
-  - type: Blog
-    url: https://blog.akita.software
   - type: X
-    url: https://twitter.com/akaboraitasoftware
+    url: https://x.com/akitasoftware
+  - type: Packages
+    url: packages/akita-software-packages.yml
+  - type: CLI
+    url: cli/akita-software-cli.yml
+  - type: ChangeLog
+    url: changelog/akita-software-changelog.yml
+  - type: Lifecycle
+    url: lifecycle/akita-software-lifecycle.yml
+  - type: Authentication
+    url: authentication/akita-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/akita-software-problem-types.yml
+  - type: Conventions
+    url: conventions/akita-software-conventions.yml
+  - type: LLMsTxt
+    url: llms/akita-software-llms.txt
+  - type: Plans
+    url: plans/akita-software-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/akita-software-rate-limits.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/akita-software/
   - type: Features
@@ -165,3 +191,8 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-30'
+  status: enriched
+  artifacts_added: 10
+  pass: local-v1

@@ -1,0 +1,78 @@
+specification: API Commons ChangeLog
+specificationVersion: '0.1'
+provider: Akita Software
+providerId: akita-software
+generated: '2026-08-30'
+method: searched
+source: https://github.com/postmanlabs/postman-insights-agent/releases
+description: >-
+  Akita Software published no dated changelog of its own that survives — the
+  akita.software domain that carried docs.akita.software and blog.akita.software
+  has expired. The living change record for the technology is the tagged release
+  stream of the open-source Postman Insights Agent, the direct successor to the
+  Akita agent. Only that stream is recorded here; Postman's platform-wide
+  release notes belong to Postman and are not claimed for Akita.
+scheme: semver
+current_version: v0.40.1
+current_version_released: '2026-03-26'
+cadence: >-
+  Irregular; 3 releases in the 12 months to 2026-08-30, against roughly monthly
+  cadence through 2025. The default branch was last pushed 2026-08-30, so work
+  continues ahead of the last tag.
+breaking_change_policy: >-
+  None published. Release notes are auto-generated "What's Changed" PR lists
+  with no breaking-change section and no deprecation notices.
+entries:
+  - version: v0.40.1
+    date: '2026-03-26'
+    breaking: false
+    highlights:
+      - Support the Postman EU region via a new `--region` flag (PR 171).
+      - Update redaction configuration (PR 172).
+      - Documentation updates (PR 170).
+  - version: v0.40.0
+    date: '2026-02-27'
+    breaking: false
+    highlights:
+      - Add discovery mode support to the Insights agent (AC-90 / AC-87, PR 161).
+      - Handle the "API Catalog not enabled" error condition (AC-139).
+      - Add discovery-mode documentation (PR 165).
+  - version: v0.39.0
+    date: '2026-02-02'
+    breaking: false
+    highlights:
+      - Create an Insights service on behalf of the customer (POA-4637, PR 150).
+      - Preserve W3C Trace Context headers irrespective of redaction criteria.
+      - Update redaction configuration (PR 154).
+  - version: v0.38.1
+    date: '2025-09-17'
+    breaking: false
+    highlights:
+      - Capture-all-payload support in the `kube run` command (POA-4440, PR 145).
+      - Add Portkey sensitive headers to the default redaction list (PR 146).
+      - Stop obfuscating Postman internal team witnesses for LLM calls (POA-4481).
+  - version: v0.38.0
+    date: '2025-09-02'
+    breaking: false
+    highlights:
+      - Parse `text/event-stream` bodies as a protobuf list (POA-4283, PR 143).
+      - New flag to always capture payloads (POA-4390, PR 144).
+  - version: v0.37.3
+    date: '2025-08-12'
+    breaking: false
+    highlights:
+      - Capture service ID on buffer metrics logs (POA-4157, PR 138).
+      - Handle panic while shutting down the daemonset (POA-3109, PR 130).
+      - Rework the telemetry package to handle daemonset subprocesses (POA-3089).
+predecessor:
+  name: Akita CLI
+  repository: https://github.com/postmanlabs/observability-cli
+  last_release: v0.30.7
+  last_release_date: '2024-05-21'
+  status: archived
+  note: >-
+    Formerly akitasoftware/akita-cli. Archived read-only 2024-06-05; its release
+    stream ended there.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

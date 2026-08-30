@@ -1,0 +1,118 @@
+specification: API Commons CLI
+specificationVersion: '0.1'
+provider: Akita Software
+providerId: akita-software
+generated: '2026-08-30'
+method: searched
+source: >-
+  https://github.com/postmanlabs/postman-insights-agent (cmd/root.go,
+  cmd/internal/*), https://learning.postman.com/docs/insights/get-started/ec2/,
+  and the archived akitasoftware/homebrew-akita tap
+description: >-
+  Akita's product was, and its successor still is, delivered primarily as a
+  command-line agent rather than as a hosted API with client SDKs. The original
+  `akita` CLI (apidump / apispec / apidiff) is archived; the shipping binary is
+  `postman-insights-agent`, open-sourced under Apache-2.0 in the postmanlabs
+  organization.
+clis:
+  - name: postman-insights-agent
+    status: active
+    language: Go
+    license: Apache-2.0
+    repository: https://github.com/postmanlabs/postman-insights-agent
+    docs: https://learning.postman.com/docs/insights/get-started/overview/
+    install:
+      - method: script
+        command: >-
+          bash -c "$(curl -L https://releases.observability.postman.com/scripts/install-postman-insights-agent.sh)"
+        source: https://learning.postman.com/docs/insights/get-started/ec2/
+        note: Distributed (non-community) build; the script URL is unpinned.
+      - method: source
+        command: make
+        source: https://github.com/postmanlabs/postman-insights-agent#how-to-build
+        note: >-
+          Requires Go 1.18+ and libpcap. Builds the community version, which
+          omits type and data-format inference.
+    authentication:
+      env:
+        - POSTMAN_API_KEY
+        - POSTMAN_INSIGHTS_API_KEY
+        - POSTMAN_REGION
+        - POSTMAN_ENV
+      legacy_env:
+        - AKITA_API_KEY_ID
+        - AKITA_API_KEY_SECRET
+      note: >-
+        Derived from rest/auth_handlers.go and rest/domain.go. Postman keys are
+        sent as an `x-api-key` header; legacy Akita keys fall back to HTTP Basic.
+    commands:
+      - command: apidump
+        summary: Capture requests/responses from network traffic.
+        description: >-
+          Capture and store a sequence of requests/responses to a service by
+          observing network traffic. Supports opt-in Linux-only eBPF capture of
+          decrypted HTTPS via `--enable-https-capture`.
+      - command: ecs
+        summary: Add the Postman Insights Agent to AWS ECS.
+        subcommands:
+          - command: ecs add
+            summary: Add the agent container to an ECS task.
+          - command: ecs remove
+            summary: Remove a previously installed agent container from an ECS task.
+          - command: ecs cf-fragment
+            summary: >-
+              Print an AWS CloudFormation fragment that adds the agent as a
+              sidecar container.
+      - command: kube
+        summary: Install the Postman Insights Agent in your Kubernetes cluster.
+        description: Supports DaemonSet and sidecar deployment modes.
+      - command: ec2
+        summary: Add the Postman Insights Agent to an EC2 server as a systemd service.
+        subcommands:
+          - command: ec2 setup
+            summary: Install the agent as a systemd service on the current EC2 host.
+            example: >-
+              sudo POSTMAN_API_KEY=<your-api-key> postman-insights-agent ec2 setup
+              --project <projectId> --repro-mode
+          - command: ec2 remove
+            summary: Remove a previously installed agent from an EC2 server.
+      - command: specs
+        summary: Manage API specs (legacy).
+        subcommands:
+          - command: specs get [ID|VERSION]
+            summary: Get an API specification from the Akita cloud.
+        note: Carried under cmd/internal/legacy — retained from the Akita CLI.
+      - command: ascii
+        summary: Print the agent's ASCII art banner.
+    flags:
+      - flag: --domain
+        description: Override the backend observability host.
+      - flag: --region
+        description: US or EU; selects api.observability.postman.com or api.observability.eu.postman.com.
+      - flag: --repro-mode
+        description: Send encrypted payload data so requests can be replayed for debugging.
+      - flag: --enable-https-capture
+        description: Opt-in eBPF uprobe capture of decrypted HTTPS. Linux only, kernel 5.8+.
+  - name: akita
+    status: archived
+    language: Go
+    repository: https://github.com/postmanlabs/observability-cli
+    note: >-
+      The original Akita CLI, formerly akitasoftware/akita-cli. Archived
+      (read-only) since 2024-06-05, last tagged v0.30.7 on 2024-05-21. Its
+      Homebrew tap (akitasoftware/homebrew-akita, akita-cli 0.29.3) still exists
+      but its download URLs resolve to the EXPIRED releases.akita.software host,
+      so the tap can no longer install.
+    commands:
+      - command: apidump
+        summary: Passively watch API traffic.
+      - command: apispec
+        summary: Model API behavior — generate an OpenAPI spec from observed traffic.
+      - command: apidiff
+        summary: Compare API behavior between two models.
+    source: >-
+      GitHub repository description for akitasoftware/akita-cli, retrieved
+      2026-08-30
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

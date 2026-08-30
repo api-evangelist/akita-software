@@ -1,0 +1,84 @@
+specification: API Commons Authentication
+specificationVersion: '0.1'
+provider: Akita Software
+providerId: akita-software
+generated: '2026-08-30'
+method: derived
+source: >-
+  rest/auth_handlers.go, rest/base_client.go and rest/domain.go in
+  https://github.com/postmanlabs/postman-insights-agent (Apache-2.0), read
+  2026-08-30
+description: >-
+  No OpenAPI or authentication reference page is published for the Akita /
+  Postman observability API — Akita's documentation host no longer resolves and
+  the observability API host serves no spec. The authentication model below is
+  DERIVED from the first-party open-source agent's own REST client, which is the
+  only public description of how the API is called. It is faithful to that
+  source and is not a substitute for provider documentation.
+api_host:
+  us: https://api.observability.postman.com
+  eu: https://api.observability.eu.postman.com
+  selection: >-
+    --domain overrides everything; otherwise --region / POSTMAN_REGION (US
+    default) plus POSTMAN_ENV select the host.
+  source: rest/domain.go
+securitySchemes:
+  - name: postman_api_key
+    type: apiKey
+    in: header
+    parameter: x-api-key
+    description: >-
+      Primary scheme. The Postman API key is sent as an `x-api-key` request
+      header on every call. Supplied via the POSTMAN_API_KEY or
+      POSTMAN_INSIGHTS_API_KEY environment variable.
+    environment_variables:
+      - POSTMAN_API_KEY
+      - POSTMAN_INSIGHTS_API_KEY
+    status: current
+  - name: postman_environment
+    type: apiKey
+    in: header
+    parameter: x-postman-env
+    description: >-
+      Companion header selecting the Postman backend environment. Set only when
+      POSTMAN_ENV is non-empty. Not a credential on its own.
+    environment_variables:
+      - POSTMAN_ENV
+    status: current
+  - name: akita_basic
+    type: http
+    scheme: basic
+    description: >-
+      Legacy fallback used only when no Postman key is present: the Akita API
+      key ID and secret are sent as HTTP Basic credentials. The source marks
+      this path as retained for integration tests.
+    environment_variables:
+      - AKITA_API_KEY_ID
+      - AKITA_API_KEY_SECRET
+    status: legacy
+  - name: daemonset_verification_token
+    type: apiKey
+    in: header
+    description: >-
+      A Postman Insights verification token used by the Kubernetes daemonset
+      process to authenticate telemetry requests, distinct from the user API
+      key. Header name not exposed in the reviewed source.
+    status: current
+oauth2: false
+openid_connect: false
+mutual_tls: false
+scopes:
+  published: false
+  note: >-
+    Key-authenticated surface with no OAuth flows and no scope reference, so no
+    scopes/ artifact is emitted. Authorization is enforced server-side by team
+    entitlement — the API returns 403 with "API Catalog is not enabled for this
+    team" when the feature is not licensed.
+transport:
+  https_only: true
+  note: >-
+    The client hardcodes scheme "https"; plain HTTP is reachable only behind the
+    test_only_disable_https flag. Request bodies are sent as application/json.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

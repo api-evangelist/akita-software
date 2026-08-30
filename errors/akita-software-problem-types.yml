@@ -1,0 +1,60 @@
+specification: API Commons Error Catalog
+specificationVersion: '0.1'
+provider: Akita Software
+providerId: akita-software
+generated: '2026-08-30'
+method: derived
+source: >-
+  rest/errors.go and rest/base_client.go in
+  https://github.com/postmanlabs/postman-insights-agent, read 2026-08-30
+format: none
+description: >-
+  There is no published error reference for the Akita or Postman observability
+  API and no OpenAPI to derive 4xx/5xx responses from. The catalog below is
+  DERIVED from the only public artifact that describes the API's error
+  behaviour: the first-party open-source agent's error-mapping code. It is
+  deliberately short — these are the only error conditions the agent recognises
+  by name, not a complete registry.
+envelope:
+  shape: opaque
+  media_type: unspecified
+  rfc9457: false
+  note: >-
+    The agent models an error as HTTPError{StatusCode, Body} and discriminates
+    by substring-matching the raw response body, not by a structured code field.
+    That is the strongest available evidence that the API returns no
+    machine-readable error type — a consumer cannot branch on anything but a
+    status code and a human-readable string.
+problem_types:
+  - id: api-catalog-not-enabled
+    status: 403
+    body_marker: API Catalog is not enabled
+    title: API Catalog is not enabled for this team
+    detail: >-
+      The team's Postman plan or feature flags do not include the API Catalog
+      feature that the discovery endpoints require.
+    remediation: >-
+      Contact your Postman administrator to enable the API Catalog feature.
+      Postman Insights requires an Enterprise plan.
+    source: rest/errors.go MapAPICatalogError
+  - id: discovery-ttl-expired
+    status: 403
+    body_marker: discovery traffic TTL expired
+    title: Discovery traffic TTL expired
+    detail: >-
+      The time-to-live on the service's discovery traffic window has elapsed, so
+      further discovery submissions for that service are rejected.
+    remediation: >-
+      Restart discovery for the service from the Postman Insights UI. No
+      retry-after signal is returned.
+    source: rest/errors.go IsDiscoveryTTLExpiredError
+gaps:
+  - No error code registry is published.
+  - No RFC 9457 application/problem+json envelope.
+  - No documented 429 / rate-limit error, and no Retry-After semantics.
+  - >-
+    Error discrimination requires substring matching on a prose body, which is
+    not a stable contract for an automated client.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

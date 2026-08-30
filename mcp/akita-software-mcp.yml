@@ -1,0 +1,35 @@
+specification: API Commons MCP
+specificationVersion: '0.1'
+provider: Akita Software
+providerId: akita-software
+generated: '2026-08-30'
+method: none
+source: >-
+  probes of www.akitasoftware.com (403 Cloudflare block),
+  api.observability.postman.com (404 on every discovery path) and DNS lookups
+  for the expired akita.software domain, 2026-08-30
+description: >-
+  Akita Software ships no MCP server, hosted or local. No candidate tool list
+  could be derived either: there is no OpenAPI, GraphQL schema or any other
+  machine-readable contract to derive tools from, and the observed endpoint
+  surface in conventions/ is read from client source code rather than a
+  published contract. NO MCPServer POINTER IS EMITTED — this file records an
+  absence.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: probed
+tools: []
+notes:
+  - >-
+    Postman — the acquirer — operates its own MCP surface. It belongs to Postman
+    and is profiled at all/postman; claiming it here would misattribute a
+    Postman agent surface to Akita.
+  - >-
+    An MCP endpoint URL has deliberately NOT been guessed for this provider.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

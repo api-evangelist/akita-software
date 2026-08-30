@@ -4,144 +4,49 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Akita Software
 providerId: akita-software
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+generated: '2026-08-30'
+modified: '2026-08-30'
+method: searched
+source: >-
+  https://learning.postman.com/docs/insights/overview/ (read 2026-08-30);
+  https://www.akitasoftware.com/ (HTTP 403, Cloudflare block);
+  https://docs.akita.software/ (DNS NXDOMAIN — the akita.software domain has
+  expired)
+plan_count: 0
 tags:
   - Acquired
   - API Discovery
   - API Mapping
   - API Observability
   - Traffic Analysis
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
-plans:
-  - id: akita-software-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Akita Software API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Akita Software
-      - name: Postman Live Insights
-  - id: akita-software-pro
-    name: Professional
-    type: paid
-    description: Production tier for Akita Software. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Akita Software
-      - name: Postman Live Insights
-  - id: akita-software-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Akita Software. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Akita Software
-      - name: Postman Live Insights
+description: >-
+  Akita Software publishes no plans or pricing. Its documentation domain has
+  expired and its marketing site returns a Cloudflare 403 to every crawler, so
+  no pricing page could be read on 2026-08-30. plan_count is an honest ZERO.
+  The successor product, Postman Insights, is not sold as its own tiered API
+  plan either: the Postman documentation states it requires an Enterprise plan,
+  and any tiering belongs to Postman's platform pricing, not to Akita.
+plans: []
+gating:
+  successor_product: Postman Insights
+  requirement: Postman Enterprise plan
+  stage: beta
+  source: https://learning.postman.com/docs/insights/overview/
+  pricing_page: https://www.postman.com/pricing/
+  owner: Postman
+  note: >-
+    Recorded as context, not as an Akita plan. Postman's platform pricing is
+    profiled at all/postman.
+history:
+  - date: '2026-08-30'
+    change: >-
+      REPLACED a fabricated scaffold. The previous version of this file listed
+      Free / Professional / Enterprise tiers with 1,000 and 100,000 request
+      monthly quotas and 10/100 rpm rate limits. None of those figures was ever
+      published by Akita; they were bulk-sweep defaults written 2026-05-04 and
+      flagged as scaffold in their own description. They have been removed
+      rather than carried forward, because a fabricated plan reads to a consumer
+      as a real one.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,97 @@
+specification: API Commons Lifecycle
+specificationVersion: '0.1'
+provider: Akita Software
+providerId: akita-software
+generated: '2026-08-30'
+method: searched
+source: >-
+  https://blog.postman.com/postman-acquires-akita-for-automated-api-observability/,
+  https://learning.postman.com/docs/insights/overview/,
+  https://github.com/postmanlabs/observability-cli, and live DNS/HTTP probes
+  performed 2026-08-30
+description: >-
+  Akita Software is an ACQUIRED and WOUND-DOWN provider. Postman announced the
+  acquisition on 2023-07-19. Akita's independent API surface no longer exists:
+  the akita.software domain has expired, the CLI repository is archived, and the
+  marketing site sits behind a Cloudflare block. The technology continues as
+  Postman Insights, which is in beta and gated to Postman's Enterprise plan.
+status: acquired
+lifecycle_stage: sunset
+acquisition:
+  acquirer: Postman
+  announced: '2023-07-19'
+  announcement: https://blog.postman.com/postman-acquires-akita-for-automated-api-observability/
+  successor_product: Postman Insights
+  successor_url: https://www.postman.com/product/postman-insights/
+  note: >-
+    apis.yml previously stated the acquisition was in November 2023. The Postman
+    announcement post is dated 2023-07-19; that date is used here and the
+    description has been corrected. The product was first rebadged as the "Live
+    Collections Agent", then "Live Insights", and now redirects to "Postman
+    Insights".
+successor_status:
+  name: Postman Insights
+  stage: beta
+  docs: https://learning.postman.com/docs/insights/overview/
+  plan_requirement: Postman Enterprise plan
+  supported_platforms:
+    - Kubernetes (DaemonSet and sidecar)
+    - Amazon ECS (EC2 and Fargate)
+    - Amazon EC2
+    - AWS Elastic Beanstalk
+sunset_events:
+  - event: Akita CLI repository archived
+    date: '2024-06-05'
+    evidence: https://github.com/postmanlabs/observability-cli
+    detail: >-
+      akitasoftware/akita-cli transferred to postmanlabs/observability-cli and
+      set read-only. Last tag v0.30.7 (2024-05-21).
+  - event: akita.software domain expired
+    date: null
+    evidence: https://akita.software/
+    detail: >-
+      DNS for docs.akita.software, blog.akita.software, api.akita.software,
+      app.akita.software and releases.akita.software returns NXDOMAIN. The
+      apex akita.software now 200s to expireddomains.com. Documentation, blog,
+      API host and CLI release host are all gone. Date of expiry not published.
+  - event: www.akitasoftware.com placed behind a Cloudflare block
+    date: null
+    evidence: https://www.akitasoftware.com/
+    detail: >-
+      Every path returns HTTP 403 with a Cloudflare "Sorry, you have been
+      blocked" interstitial to crawlers and to a browser User-Agent alike. The
+      site's actual content could not be read on 2026-08-30.
+versioning:
+  scheme: semver
+  surface: >-
+    Applies to the successor agent binary, not to a versioned HTTP API. The
+    observability API itself is path-versioned (/v1/... and /v2/agent/...),
+    observed in the agent's own REST client; no version policy is published.
+  policy_published: false
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    No RFC 8594 Sunset/Deprecation header policy, no deprecation notice period
+    and no end-of-life schedule were published for either the Akita API or the
+    Postman Insights observability API. The Akita product was retired by
+    acquisition and domain expiry rather than by an announced deprecation.
+    Recorded as an explicit ABSENCE — this is the deprecation posture of a
+    wound-down provider, not an unchecked field.
+status_page:
+  url: https://status.postman.com/
+  status: 200
+  owner: Postman
+  covers_provider: false
+  note: >-
+    Akita ran no status page that survives. status.postman.com is Postman's
+    platform status page and is the operational signal for the successor
+    product; it is Postman's, not Akita's, so no StatusPage pointer is emitted
+    on this profile.
+sla:
+  published: false
+  note: No SLA published for Akita, and none published for the Insights beta.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

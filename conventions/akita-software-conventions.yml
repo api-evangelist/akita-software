@@ -1,0 +1,158 @@
+specification: API Commons Conventions
+specificationVersion: '0.1'
+provider: Akita Software
+providerId: akita-software
+generated: '2026-08-30'
+method: derived
+source: >-
+  rest/base_client.go, rest/front_client.go, rest/learn_client.go,
+  rest/auth_handlers.go, rest/domain.go and rest/errors.go in
+  https://github.com/postmanlabs/postman-insights-agent, read 2026-08-30;
+  https://learning.postman.com/docs/insights/overview/
+description: >-
+  Cross-cutting runtime semantics for the observability API that the Akita agent
+  and its successor call. Akita published no API reference that survives, and
+  the observability API host publishes no spec, so this is derived from the
+  first-party open-source client. Everything below is what the CLIENT does; only
+  where noted is it something the PROVIDER documents.
+auth_style:
+  scheme: api-key-header
+  header: x-api-key
+  see: authentication/akita-software-authentication.yml
+base_url:
+  us: https://api.observability.postman.com
+  eu: https://api.observability.eu.postman.com
+versioning:
+  style: path
+  observed_prefixes:
+    - /v1
+    - /v2/agent
+  policy_published: false
+  note: >-
+    Both prefixes are live simultaneously in the same client — spec upload and
+    timeline queries stay on /v1 while agent/service operations moved to
+    /v2/agent — with no published migration guidance.
+observed_endpoint_surface:
+  note: >-
+    DERIVED, NOT A CONTRACT. These paths are read from the open-source client;
+    no OpenAPI is published for them and none has been authored here. Recorded
+    so the surface is not lost, not so it can be called blind.
+  paths:
+    - GET /v1/services
+    - POST /v1/services
+    - GET /v2/agent/user
+    - GET /v2/agent/services/{serviceID}
+    - POST /v2/agent/api-catalog/services/discover
+    - POST /v1/daemon/heartbeat
+    - /v1/services/{serviceID}/daemon
+    - /v2/agent/daemonset/telemetry
+    - /v2/agent/services/{serviceID}/learn
+    - /v1/services/{serviceID}/learn/{learnSessionID}
+    - /v2/agent/services/{serviceID}/learn/{learnSessionID}/async_reports
+    - /v2/agent/services/{serviceID}/settings
+    - /v1/services/{serviceID}/specs
+    - /v2/agent/services/{serviceID}/specs/{apiID}
+    - /v1/services/{serviceID}/upload-spec
+    - /v1/services/{serviceID}/spec-versions/{version}
+    - /v2/agent/services/{serviceID}/spec-versions/{version}
+    - /v1/services/{serviceID}/specs/{specID}/diff/{otherSpecID}/trie
+    - /v1/services/{serviceID}/ids/specs/{name}
+    - /v1/services/{serviceID}/ids/learn_sessions/{name}
+    - /v1/services/{serviceID}/timeline/{timelineID}/query
+    - /v1/services/{serviceID}/servicegraph/{graphID}/query
+    - /v2/agent/services/{serviceID}/telemetry/client/deployment
+    - /v2/agent/services/{serviceID}/telemetry/client/deployment/start
+identifiers:
+  style: akid
+  note: >-
+    Resources are addressed by "akid" typed identifiers (an Akita-era prefixed
+    ID scheme carried into the Postman backend), plus name-to-ID lookup
+    endpoints under /v1/services/{serviceID}/ids/.
+content_type:
+  request: application/json
+  response: application/json
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    No idempotency key header, no documented retry-safety guarantee, and no
+    idempotency handling in the first-party client. Recorded as an explicit
+    ABSENCE. No `Idempotency` pointer is emitted.
+pagination:
+  documented: false
+  note: >-
+    No pagination parameters appear in the client's list calls (GET /v1/services
+    returns an unbounded collection). Not documented anywhere public.
+rate_limit_signaling:
+  documented: false
+  headers: []
+  note: >-
+    No X-RateLimit-* / RateLimit-* handling in the client and no published
+    limits. See rate-limits/akita-software-rate-limits.yml.
+request_tracing:
+  w3c_trace_context: true
+  note: >-
+    The agent preserves W3C Trace Context headers irrespective of redaction
+    criteria (release v0.39.0, 2026-02-02) — traffic it observes keeps
+    traceparent/tracestate. This is a data-handling behaviour of the agent, not
+    a request-id convention on the API itself; the API exposes no documented
+    request-id header.
+error_envelope:
+  see: errors/akita-software-problem-types.yml
+  rfc9457: false
+reversibility:
+  grade: documented
+  applies_to: >-
+    The write surface a practitioner actually operates: agent installation and
+    the service/spec objects it creates.
+  note: >-
+    Reversal paths exist and are first-party documented, but NO reversal WINDOW
+    is stated anywhere in the docs or the source, so this grades `documented`
+    and not `verified`. No window has been invented here.
+  operations:
+    - action: Install the agent on an ECS task
+      operation: postman-insights-agent ecs add
+      reversal: postman-insights-agent ecs remove
+      window: null
+      docs: https://learning.postman.com/docs/insights/get-started/overview/
+      note: >-
+        Removes a previously installed agent container from the ECS task.
+        No stated window; removal is available at any time.
+    - action: Install the agent as a systemd service on EC2
+      operation: postman-insights-agent ec2 setup
+      reversal: postman-insights-agent ec2 remove
+      window: null
+      docs: https://learning.postman.com/docs/insights/get-started/ec2/
+      note: No stated window.
+    - action: Submit observed traffic for discovery
+      operation: POST /v2/agent/api-catalog/services/discover
+      reversal: null
+      window: null
+      note: >-
+        NO reversal path is published for submitted traffic or for the endpoints
+        inferred from it. The only time bound found anywhere is the server-side
+        "discovery traffic TTL expired" 403, whose duration is not documented —
+        it is an expiry, not an undo, and is NOT recorded as a reversal window.
+    - action: Upload an API spec
+      operation: POST /v1/services/{serviceID}/upload-spec
+      reversal: null
+      window: null
+      note: No delete or rollback endpoint appears in the first-party client.
+dry_run_mode:
+  supported: false
+  note: >-
+    No dry-run/preview flag on the write surface. `ecs cf-fragment` prints a
+    CloudFormation fragment instead of applying it, which is the closest
+    equivalent, but it is a code generator rather than a rehearsal of an API call.
+data_handling:
+  redaction: >-
+    The agent maintains a default sensitive-header redaction list, updated
+    through the release stream (v0.38.1 added Portkey headers; v0.39.0 and
+    v0.40.1 updated the redaction configuration).
+  repro_mode: >-
+    `--repro-mode` sends encrypted payload data so requests can be replayed for
+    debugging — an explicit opt-in to shipping payloads.
+  docs: https://learning.postman.com/docs/insights/data/access/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

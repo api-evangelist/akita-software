@@ -1,0 +1,148 @@
+specification: API Commons Well-Known
+specificationVersion: '0.1'
+provider: Akita Software
+providerId: akita-software
+generated: '2026-08-30'
+method: probed
+source: >-
+  direct HTTPS GETs on 2026-08-30 with a browser User-Agent against every host
+  named in apis.yml plus the observability API host recovered from the
+  open-source agent source
+description: >-
+  Well-known document probe for Akita Software. NO POINTER IS EMITTED from this
+  file. Every host Akita itself controls either returns a Cloudflare 403 to all
+  crawlers (www.akitasoftware.com) or no longer resolves (the akita.software
+  domain has expired). The only 200s recorded below were served by
+  postman.com hosts, which belong to Postman — the acquirer — and are profiled
+  separately at all/postman; crediting Akita with Postman's security.txt,
+  llms.txt or api-catalog would be a misattribution, so they are recorded here
+  as evidence only and neither saved verbatim into this repo nor pointed at from
+  apis.yml.
+hosts:
+  - host: www.akitasoftware.com
+    note: >-
+      Akita's own marketing host. Every path, including the site root, answers
+      HTTP 403 with a Cloudflare "Attention Required / Sorry, you have been
+      blocked" interstitial (4,578 bytes of HTML) to both curl and a browser
+      User-Agent. This is an edge block, not a missing document — the state of
+      these paths is unknown, not absent.
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 403
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+        file: null
+      - path: /.well-known/api-catalog
+        status: 403
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 403
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 403
+        file: null
+      - path: /.well-known/agent.json
+        status: 403
+        file: null
+      - path: /llms.txt
+        status: 403
+        file: null
+  - host: api.observability.postman.com
+    note: >-
+      The live observability API host the Postman Insights Agent calls, recovered
+      from rest/domain.go in postmanlabs/postman-insights-agent. The host is up
+      and answers every probed path with a bare text/plain 404 (0 bytes) — a real
+      recorded absence, not a block.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+      - path: /llms.txt
+        status: 404
+        file: null
+  - host: docs.akita.software
+    note: >-
+      DNS NXDOMAIN. The akita.software second-level domain has expired and now
+      redirects to expireddomains.com; the documentation host is gone entirely.
+      No HTTP probe was possible.
+    documents:
+      - path: /llms.txt
+        status: 0
+        file: null
+  - host: blog.akita.software
+    note: DNS NXDOMAIN — same expired akita.software domain.
+    documents:
+      - path: /llms.txt
+        status: 0
+        file: null
+  - host: www.postman.com
+    note: >-
+      NOT AN AKITA HOST. Serves the successor product page. Recorded for evidence
+      only — the 200s below belong to Postman and are not claimed for Akita.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+      - path: /llms.txt
+        status: 200
+        file: null
+  - host: learning.postman.com
+    note: >-
+      NOT AN AKITA HOST. Serves the Postman Insights documentation. Its
+      /.well-known/api-catalog is a real RFC 9727 linkset pointing at
+      https://learning.postman.com/openapi/api-reference.yaml — Postman's
+      platform API, not an Akita or Insights contract. Recorded for evidence
+      only.
+    documents:
+      - path: /.well-known/api-catalog
+        status: 200
+        file: null
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+      - path: /llms.txt
+        status: 200
+        file: null
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

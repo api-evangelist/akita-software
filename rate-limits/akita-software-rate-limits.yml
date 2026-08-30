@@ -4,10 +4,15 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Akita Software
 providerId: akita-software
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+generated: '2026-08-30'
+modified: '2026-08-30'
+method: searched
+source: >-
+  https://learning.postman.com/docs/insights/overview/ (read 2026-08-30);
+  rest/base_client.go in https://github.com/postmanlabs/postman-insights-agent;
+  https://docs.akita.software/ (DNS NXDOMAIN — domain expired);
+  https://www.akitasoftware.com/ (HTTP 403, Cloudflare block)
+limit_count: 0
 tags:
   - Acquired
   - API Discovery
@@ -15,83 +20,35 @@ tags:
   - API Observability
   - Traffic Analysis
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Akita Software API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Akita Software
-      - Postman Live Insights
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Akita Software
-      - Postman Live Insights
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Akita Software
-      - Postman Live Insights
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Akita Software
-      - Postman Live Insights
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Akita Software
-      - Postman Live Insights
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+description: >-
+  No rate limits are published for the Akita API or for the Postman
+  observability API that succeeded it. limit_count is an honest ZERO. Two
+  independent checks agree: the Postman Insights documentation states no limits,
+  and the first-party open-source agent's REST client implements no rate-limit
+  header parsing, no 429 handling and no Retry-After backoff — a client that
+  ignores the runtime signal is strong evidence the API does not send one.
+headers: {}
+response_codes: {}
+limits: []
+policies: []
+observed:
+  rate_limit_headers_handled_by_client: false
+  status_429_handled_by_client: false
+  retry_after_handled_by_client: false
+  source: rest/base_client.go, rest/errors.go
+  note: >-
+    The only 4xx conditions the client recognises are two 403 entitlement/TTL
+    errors (see errors/akita-software-problem-types.yml). Neither is a
+    throttling signal.
+history:
+  - date: '2026-08-30'
+    change: >-
+      REPLACED a fabricated scaffold. The previous version of this file declared
+      X-RateLimit-* / RateLimit-Policy headers and free/professional/enterprise
+      limits of 10/100/1000 requests per minute with 1,000 and 100,000 monthly
+      quotas. Akita never published any of it; the values were bulk-sweep
+      defaults written 2026-05-04. Advertising response headers an API does not
+      send is worse than recording nothing, so they have been removed.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
