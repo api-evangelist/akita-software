@@ -199,3 +199,6 @@ x-enrichment:
   status: enriched
   artifacts_added: 10
   pass: local-v1
+x-parent: postman
+x-relationship: acquisition
+x-acquired: 2023
