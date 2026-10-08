@@ -100,6 +100,8 @@ apis:
       - type: Support
         url: https://community.postman.com/
 common:
+  - type: FinOps
+    url: finops/akita-software-finops.yml
   - type: Releases
     url: https://github.com/postmanlabs/postman-insights-agent/releases
   - type: ContributionGuide
