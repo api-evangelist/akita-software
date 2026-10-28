@@ -1,4 +1,4 @@
-# Akita Software (akita-software)
+# Akita Software
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,93 +64,105 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Akita Software was an API observability and analysis platform that used passive traffic monitoring to automatically map APIs, detect changes, and identify issues without requiring code changes or proxies. Akita was acquired by Postman in November 2023 and its technology has been integrated into the Postman platform as Postman Live Insights. The Akita agent is now available as the open-source Postman Insights Agent.
+Akita Software was an API observability and analysis platform that used passive traffic monitoring to automatically map APIs, detect changes, and identify issues without requiring code changes or proxies. Akita was acquired by Postman in July 2023 (announced 2023-07-19) and its technology has been integrated into the Postman platform as Postman Live Insights. The Akita agent is now available as the open-source Postman Insights Agent.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/akita-software/refs/heads/main/apis.yml)
+**Areas:** Acquired · API Discovery · API Mapping · API Observability · Traffic Analysis
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Akita Software on APIs.io
 
-## Tags:
+Everything profiled for Akita Software is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/akita-software/](https://apis.io/providers/akita-software/)** — or go straight to one of the APIs or properties below.
 
- - Acquired, API Discovery, API Mapping, API Observability, Traffic Analysis
+### APIs (2)
 
-## Timestamps
+- [Akita Software](https://apis.io/apis/akita-software/akita-software/) — Akita Software provided an API observability platform that used passive traffic monitoring to automatically discover, map, and model APIs without requiring…
+- [Postman Live Insights](https://apis.io/apis/akita-software/postman-live-insights/) — Postman Live Insights is the successor to Akita Software, now integrated into the Postman platform. The Postman Insights Agent (open source) makes it easy…
 
-- **Created:** 2025-01-08
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Akita Software
-Akita Software provided an API observability platform that used passive traffic monitoring to automatically discover, map, and model APIs without requiring code changes or proxying.
+#### Security (2)
 
-**Human URL:** [https://www.akitasoftware.com](https://www.akitasoftware.com)
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags:
+- [Akita Software Authentication](https://apis.io/security/akita-software/akita-software-authentication/)
+- [Akita Software Domain Security](https://apis.io/security/akita-software/akita-software-domain-security/)
 
- - API Discovery, API Mapping, API Observability, Traffic Analysis
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://docs.akita.software)
-- [GitHubOrganization](https://github.com/akitasoftware)
-- [GettingStarted](https://docs.akita.software/docs/getting-started)
+- [Akita Software Plans Pricing](https://apis.io/plans/akita-software/akita-software-plans-pricing/)
 
-### Postman Live Insights
-Postman Live Insights is the successor to Akita Software, now integrated into the Postman platform. The Postman Insights Agent (open source) enables passive API traffic monitoring and discovery.
+#### Rate limits (1)
 
-**Human URL:** [https://www.postman.com/product/live-insights/](https://www.postman.com/product/live-insights/)
+Published request limits.
 
-#### Tags:
+- [Akita Software Rate Limits](https://apis.io/rate-limits/akita-software/akita-software-rate-limits/)
 
- - API Discovery, API Monitoring, API Observability, Postman
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [Documentation](https://learning.postman.com/docs/insights/insights-overview/)
-- [GitHubRepository](https://github.com/postmanlabs/postman-insights-agent)
-- [GettingStarted](https://learning.postman.com/docs/insights/insights-gs/)
+- [Akita Software Finops](https://apis.io/finops/akita-software/akita-software-finops/)
 
-## Common Properties
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.akitasoftware.com)
-- [Documentation](https://docs.akita.software)
-- [GitHubOrganization](https://github.com/akitasoftware)
-- [Blog](https://blog.akita.software)
-- [X](https://twitter.com/akaboraitasoftware)
-- [LinkedIn](https://www.linkedin.com/company/akita-software/)
+- [Documentation](https://learning.postman.com/docs/insights/overview/)
+- [GitHub](https://github.com/akitasoftware)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Passive Traffic Monitoring | Monitors API traffic passively without code changes, SDK installation, or proxying, minimizing operational overhead and risk. |
-| Automatic API Spec Generation | Generates OpenAPI specifications automatically from observed traffic, keeping documentation always up to date. |
-| Breaking Change Detection | Detects breaking API changes by comparing observed traffic patterns across deployments and branches. |
-| API Performance Monitoring | Tracks API response times, error rates, and traffic patterns to help identify performance regressions. |
-| Multi-Platform Integration | Integrates with Docker, Kubernetes, NGINX, Rails, Django, Flask, FastAPI, and Heroku for broad platform coverage. |
+**Kin Score 26.2** — thin · rubric 0.24.0 · scored 2026-10-17
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 45.2 |
+| Access clarity | 26.3 |
 
-| Name | Description |
-|------|-------------|
-| API Documentation Generation | Engineering teams automatically generate and maintain up-to-date API specs from production traffic without manual effort. |
-| API Change Management | Teams detect unintentional API breaking changes between branches or deployments before they reach production. |
-| API Discovery | Organizations discover undocumented and shadow APIs by monitoring actual network traffic across their services. |
-| Production API Monitoring | DevOps teams monitor API behavior and performance in production to quickly identify and diagnose issues. |
+**Agent readiness 8.6** — agent-aware
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-| Name | Description |
-|------|-------------|
-| Docker | Docker extension and container integration for traffic monitoring |
-| Kubernetes | Kubernetes deployment support for monitoring microservice APIs |
-| NGINX | NGINX module for mirroring API traffic to the Akita agent |
-| Heroku | Heroku buildpack for integrating Akita with Heroku applications |
-| Postman | Acquired by Postman in 2023; technology integrated as Postman Live Insights |
+**Regulatory alignment 17.6** — Horizontal (data, software, accessibility, platform)
 
-## Maintainers
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/akita-software/](https://apis.io/providers/akita-software/).
 
-**FN:** Kin Lane
+## How this profile is made
 
-**Email:** kin@apievangelist.com
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Akita Software: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/akita-software/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
